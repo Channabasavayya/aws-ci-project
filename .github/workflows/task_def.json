@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:449171519626:task-definition/app",
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:865191983657:task-definition/app",
     "containerDefinitions": [
         {
             "name": "app",
-            "image": "449171519626.dkr.ecr.ap-south-1.amazonaws.com",
+            "image": "865191983657.dkr.ecr.ap-south-1.amazonaws.com",
             "cpu": 256,
             "memory": 512,
             "portMappings": [
@@ -20,8 +20,8 @@
         }
     ],
     "family": "app",
-    "taskRoleArn": "arn:aws:iam::449171519626:role/task_excecution_role",
-    "executionRoleArn": "arn:aws:iam::449171519626:role/task_excecution_role",
+    "taskRoleArn": "arn:aws:iam::865191983657:role/ecs_role",
+    "executionRoleArn": "arn:aws:iam::865191983657:role/ecs_role",
     "networkMode": "awsvpc",
     "volumes": [],
     "status": "ACTIVE",
@@ -46,7 +46,7 @@
     ],
     "cpu": "256",
     "memory": "512",
-    "registeredAt": "2023-03-26T12:32:02.314Z",
-    "registeredBy": "arn:aws:iam::449171519626:user/channa",
+    "registeredAt": "2023-03-26T19:47:20.365Z",
+    "registeredBy": "arn:aws:iam::865191983657:user/channa_tf",
     "tags": []
 }
