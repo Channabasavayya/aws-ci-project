@@ -1,7 +1,6 @@
 resource "aws_ecs_cluster" "ecs" {
   name = "app_cluster"
 }
-
 resource "aws_ecs_service" "service" {
   name                   = "app_service"
   cluster                = aws_ecs_cluster.ecs.arn
@@ -45,3 +44,4 @@ resource "aws_ecs_task_definition" "td" {
   task_role_arn      = "arn:aws:iam::865191983657:role/ecs_role"
   execution_role_arn = "arn:aws:iam::865191983657:role/ecs_role"
 }
+
