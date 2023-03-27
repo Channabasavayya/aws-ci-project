@@ -1,6 +1,7 @@
 resource "aws_ecs_cluster" "ecs" {
   name = "app_cluster"
 }
+
 resource "aws_ecs_service" "service" {
   name                   = "app_service"
   cluster                = aws_ecs_cluster.ecs.arn
@@ -11,7 +12,6 @@ resource "aws_ecs_service" "service" {
   deployment_minimum_healthy_percent = 100
   desired_count                      = 1
   task_definition                    = aws_ecs_task_definition.td.arn
-
   network_configuration {
     assign_public_ip = true
     security_groups  = [aws_security_group.sg.id]
@@ -22,8 +22,8 @@ resource "aws_ecs_service" "service" {
 resource "aws_ecs_task_definition" "td" {
   container_definitions = jsonencode([
     {
-      name      = "app"
-      image     = "865191983657.dkr.ecr.ap-south-1.amazonaws.com"
+      name      = "app1"
+      image     = "865191983657.dkr.ecr.ap-south-1.amazonaws.com/app_repo"
       cpu       = 256
       memory    = 512
       essential = true
@@ -31,11 +31,13 @@ resource "aws_ecs_task_definition" "td" {
         {
           containerPort = 80
           hostPort      = 80
+          containerPort = 3000
+          hostPort      = 3000
         }
       ]
     }
   ])
-  family                   = "app"
+  family                   = "app1"
   requires_compatibilities = ["FARGATE"]
 
   cpu                = "256"
@@ -44,4 +46,3 @@ resource "aws_ecs_task_definition" "td" {
   task_role_arn      = "arn:aws:iam::865191983657:role/ecs_role"
   execution_role_arn = "arn:aws:iam::865191983657:role/ecs_role"
 }
-

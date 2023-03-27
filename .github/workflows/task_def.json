@@ -1,15 +1,15 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:865191983657:task-definition",
+    "taskDefinitionArn": "arn:aws:ecs:ap-south-1:865191983657:task-definition/app1",
     "containerDefinitions": [
         {
-            "name": "app",
-            "image": "865191983657.dkr.ecr.ap-south-1.amazonaws.com",
+            "name": "app1",
+            "image": "865191983657.dkr.ecr.ap-south-1.amazonaws.com/app_repo",
             "cpu": 256,
             "memory": 512,
             "portMappings": [
                 {
-                    "containerPort": 80,
-                    "hostPort": 80,
+                    "containerPort": 3000,
+                    "hostPort": 3000,
                     "protocol": "tcp"
                 }
             ],
@@ -19,15 +19,22 @@
             "volumesFrom": []
         }
     ],
-    "family": "app",
+    "family": "app1",
     "taskRoleArn": "arn:aws:iam::865191983657:role/ecs_role",
     "executionRoleArn": "arn:aws:iam::865191983657:role/ecs_role",
     "networkMode": "awsvpc",
+  
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
         {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
             "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
@@ -46,7 +53,7 @@
     ],
     "cpu": "256",
     "memory": "512",
-    "registeredAt": "2023-03-27T02:15:47.875Z",
+    "registeredAt": "2023-03-27T16:31:47.236Z",
     "registeredBy": "arn:aws:iam::865191983657:user/channa_tf",
     "tags": []
 }
